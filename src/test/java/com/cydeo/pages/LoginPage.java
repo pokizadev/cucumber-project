@@ -1,5 +1,6 @@
 package com.cydeo.pages;
 
+import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,4 +20,10 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[.='Sign in']")
     public WebElement signinBtn;
+
+    public void login(String email, String password) {
+        emailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        signinBtn.click();
+    }
 }
