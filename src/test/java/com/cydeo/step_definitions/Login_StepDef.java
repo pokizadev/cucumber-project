@@ -1,9 +1,11 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.pages.DashboardPage;
 import com.cydeo.pages.LoginPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -47,6 +49,12 @@ public class Login_StepDef {
     @Then("books should be displayed")
     public void booksShouldBeDisplayed() {
 
+        BrowserUtils.waitForURLContains("books");
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("books"));
+    }
+
+    @When("I log in using {string} and {string}")
+    public void iLogInUsingAnd(String email, String password) {
+        loginPage.login(email, password);
     }
 }
